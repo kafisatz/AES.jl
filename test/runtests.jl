@@ -1,17 +1,12 @@
 using Base.Test
 
-#include("H:\\Privat\\Militär\\Persönlich\\Julia AES Testing\\Code\\src\\AES.jl")
 include("AES.jl")
 using AES
 
 import AES: modinv,make_bitvector,subBytes_affine,make_uint8,right_bitshift!,xtime!,unsafe_multiply_same_size_arrays,make_int_vector,AES128_NK,AES128_NR,keyExpansionEnc,aes_encrypt,AES128,AES192,AES256,SUBBYTESMATRIX,SUBBYTESMATRIX_INVERSE,aes_decrypt,get_keylen_and_rounds,keyExpansionDec
-#include("constants.jl")
-#include("common.jl")
 
 #example of 4.1  on page 10
 @test xor.(hex2bytes("57"),hex2bytes("83"))==hex2bytes("d4")
-
-
 
 statei=0x53
 tmp=modinv(make_bitvector(statei))
