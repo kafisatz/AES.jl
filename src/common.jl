@@ -17,7 +17,7 @@ make_bitvector{T<:Int}(x::T) where {T} = monoic_polynomial(x)
 #=
  @time make_bitvector([7,5,4,2,1])
 =#
-function monoic_polynomial{T<:Int}(s::T)
+function monoic_polynomial(s::T) where T<:Int
   res=falses(8)
   res[s+1]=true
   return res

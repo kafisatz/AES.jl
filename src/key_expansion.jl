@@ -77,7 +77,7 @@ end
 
 function rotWord!(w)
   @inbounds push!(w,w[1])
-  shift!(w)
+  popfirst!(w)
   return nothing
 end
 
