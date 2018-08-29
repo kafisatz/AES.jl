@@ -2,7 +2,7 @@
 
 function xtime!(y::BitArray)
   lastdigit=y[end]
-  right_bitshift!(y)
+  right_bitpopfirst!(y)
   if lastdigit
     unsafe_add_same_size_arrays!(y,BITARRAY_IRREDUCIBLE_POLYNOMIAL_8BITS)
   end
@@ -17,9 +17,9 @@ function unsafe_add_same_size_arrays!(x::BitArray,y::BitArray)
   end
 end
 
-function right_bitshift!(v::BitArray)
+function right_bitpopfirst!(v::BitArray)
   pop!(v)
-  unshift!(v,false)
+  pushfirst!(v,false)
   return nothing
 end
 

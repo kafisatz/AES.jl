@@ -10,7 +10,7 @@ const AES128_NR=10
 const AES192_NR=12
 const AES256_NR=14
 
-const BITARRAY_ONE=convert(BitArray,unshift!(falses(7),true))
+const BITARRAY_ONE=convert(BitArray,pushfirst!(falses(7),true))
 const BITARRAY_ZERO=convert(BitArray,(falses(8)))
 
 const BITARRAY_IRREDUCIBLE_POLYNOMIAL=convert(BitArray,[true,true,false,true,true,false,false,false,true])

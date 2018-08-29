@@ -3,9 +3,9 @@ using Test
 aes_path=normpath(joinpath(@__FILE__,"..","..","src","AES.jl"))
 @assert isfile(aes_path)
 include(aes_path)
-using AES
+using .AES
 
-import AES: modinv,make_bitvector,subBytes_affine,make_uint8,right_bitshift!,xtime!,unsafe_multiply_same_size_arrays,make_int_vector,AES128_NK,AES128_NR,keyExpansionEnc,aes_encrypt,AES128,AES192,AES256,SUBBYTESMATRIX,SUBBYTESMATRIX_INVERSE,aes_decrypt,get_keylen_and_rounds,keyExpansionDec
+import .AES: modinv,make_bitvector,subBytes_affine,make_uint8,right_bitpopfirst!,xtime!,unsafe_multiply_same_size_arrays,make_int_vector,AES128_NK,AES128_NR,keyExpansionEnc,aes_encrypt,AES128,AES192,AES256,SUBBYTESMATRIX,SUBBYTESMATRIX_INVERSE,aes_decrypt,get_keylen_and_rounds,keyExpansionDec
 
 #example of 4.1  on page 10
 @test xor.(hex2bytes("57"),hex2bytes("83"))==hex2bytes("d4")
@@ -35,7 +35,7 @@ for z=one(UInt8):typemax(UInt8)
   @test make_uint8(make_bitvector(z))==z
   myy=make_bitvector([7,5,4,2,1])
   z1=myy>>1
-  right_bitshift!(myy)
+  right_bitpopfirst!(myy)
   @test myy==z1
 end
 
@@ -112,7 +112,7 @@ invmat0=[
 
 function expected_inverse(ui::UInt8)
 #ui=0x6b
-  ui_digits=digits(UInt8,ui,0x10)
+  ui_digits=digits(UInt8,ui,base=0x10)
   d1=0x00
   d2=0x00
   if size(ui_digits,1)==1

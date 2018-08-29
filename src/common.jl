@@ -12,12 +12,12 @@ function make_bitvector(v::Array{Int,1})
   return res
 end
 
-make_bitvector{T<:Int}(x::T) where {T} = monoic_polynomial(x)
+make_bitvector(x::T) where {T<:Integer} = monoic_polynomial(x)
 
 #=
  @time make_bitvector([7,5,4,2,1])
 =#
-function monoic_polynomial{T<:Int}(s::T)
+function monoic_polynomial(s::T) where {T<:Integer}
   res=falses(8)
   res[s+1]=true
   return res
@@ -47,7 +47,7 @@ function make_uint8(v::BitVector)
 end
 
 function make_bitvector(v::UInt8)
-  b=bits(v)
+  b=bitstring(v)
   #lenb=length(b)
   #b=reverse(b)
   res=falses(8)
@@ -60,7 +60,7 @@ function make_bitvector(v::UInt8)
 end
 
 function make_bitvector(v::UInt16)
-  b=bits(v)
+  b=bitstring(v)
   #lenb=length(b)
   #b=reverse(b)
   res=falses(16)
