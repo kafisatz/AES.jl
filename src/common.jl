@@ -12,7 +12,7 @@ function make_bitvector(v::Array{Int,1})
   return res
 end
 
-make_bitvector{T<:Int}(x::T)=monoic_polynomial(x)
+make_bitvector{T<:Int}(x::T) where {T} = monoic_polynomial(x)
 
 #=
  @time make_bitvector([7,5,4,2,1])

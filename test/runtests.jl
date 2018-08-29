@@ -1,6 +1,8 @@
-using Base.Test
+using Test
 
-include("AES.jl")
+aes_path=normpath(joinpath(@__FILE__,"..","..","src","AES.jl"))
+@assert isfile(aes_path)
+include(aes_path)
 using AES
 
 import AES: modinv,make_bitvector,subBytes_affine,make_uint8,right_bitshift!,xtime!,unsafe_multiply_same_size_arrays,make_int_vector,AES128_NK,AES128_NR,keyExpansionEnc,aes_encrypt,AES128,AES192,AES256,SUBBYTESMATRIX,SUBBYTESMATRIX_INVERSE,aes_decrypt,get_keylen_and_rounds,keyExpansionDec

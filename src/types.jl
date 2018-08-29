@@ -1,8 +1,8 @@
 #empty
 
-type AES128
+abstract type AES128
 end
-type AES192
+abstract type AES192
 end
-type AES256
+abstract type AES256
 end
