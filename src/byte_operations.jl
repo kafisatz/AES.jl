@@ -19,7 +19,7 @@ end
 
 function right_bitshift!(v::BitArray)
   pop!(v)
-  unshift!(v,false)
+  pushfirst!(v,false)
   return nothing
 end
 
